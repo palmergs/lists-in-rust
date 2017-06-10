@@ -152,10 +152,7 @@ mod test {
     #[test]
     fn into_iter() {
         let mut list = List::new();
-        list.push(1);
-        list.push(2);
-        list.push(3);
-
+        list.push(1).push(2).push(3);
 
         let mut iter = list.into_iter();
         assert_eq!(iter.next(), Some(3));
@@ -164,6 +161,16 @@ mod test {
         assert_eq!(iter.next(), None);
     }        
 
+    #[test]
+    fn iter() {
+        let mut list = List::new();
+        list.push(1).push(2).push(3);
+
+        let mut iter = list.iter();
+        assert_eq!(iter.next(), Some(&3));
+        assert_eq!(iter.next(), Some(&2));
+        assert_eq!(iter.next(), Some(&1));
+    }
 
     #[test]
     fn iter_mut() {
